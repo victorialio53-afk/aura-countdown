@@ -1,1 +1,144 @@
+* {
+  box-sizing: border-box;
+}
 
+html,
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  background: #09090d;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(102, 105, 160, 0.18),
+      transparent 45%
+    ),
+    #09090d;
+}
+
+.screen {
+  width: min(92%, 900px);
+  min-height: 80vh;
+
+  border: 1px solid rgba(141, 92, 255, 0.45);
+
+  padding: 32px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  position: relative;
+
+  background: rgba(15, 15, 22, 0.72);
+
+  box-shadow:
+    0 0 50px rgba(123, 73, 255, 0.08);
+}
+
+.system-label {
+  font-family: monospace;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #8d5cff;
+}
+
+.status {
+  font-family: monospace;
+  margin-top: 25px;
+  font-size: 14px;
+  color: #a980ff;
+}
+
+.timer-wrapper {
+  text-align: center;
+}
+
+.small-title {
+  font-family: monospace;
+  letter-spacing: 3px;
+  color: #999;
+  margin-bottom: 28px;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.time-block {
+  min-width: 120px;
+}
+
+.time-block span {
+  display: block;
+  font-size: clamp(55px, 11vw, 110px);
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -4px;
+}
+
+.time-block small {
+  display: block;
+  margin-top: 15px;
+  font-family: monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #777;
+}
+
+.separator {
+  font-size: clamp(45px, 8vw, 80px);
+  color: #713eff;
+  transform: translateY(-12px);
+}
+
+.deadline {
+  margin-top: 38px;
+  font-family: monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #777;
+}
+
+.footer {
+  font-family: monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #555;
+}
+
+@media (max-width: 600px) {
+
+  .screen {
+    width: 100%;
+    min-height: 100vh;
+    border: none;
+    padding: 25px 18px;
+  }
+
+  .timer {
+    gap: 7px;
+  }
+
+  .time-block {
+    min-width: 75px;
+  }
+
+  .time-block span {
+    letter-spacing: -2px;
+  }
+}
