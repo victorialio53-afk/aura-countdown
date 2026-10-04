@@ -4,30 +4,40 @@ const deadline =
   ).getTime();
 
 
+
 const hoursElement =
   document.getElementById(
     "hours"
   );
+
 
 const minutesElement =
   document.getElementById(
     "minutes"
   );
 
+
 const secondsElement =
   document.getElementById(
     "seconds"
   );
+
 
 const statusElement =
   document.getElementById(
     "status"
   );
 
+
 const registrationButton =
   document.getElementById(
     "registrationButton"
   );
+
+
+
+let timerInterval;
+
 
 
 function formatNumber(number) {
@@ -41,13 +51,17 @@ function formatNumber(number) {
 }
 
 
+
 function closeRegistration() {
+
 
   hoursElement.textContent =
     "00";
 
+
   minutesElement.textContent =
     "00";
+
 
   secondsElement.textContent =
     "00";
@@ -69,10 +83,26 @@ function closeRegistration() {
     );
 
 
-  registrationButton
-    .querySelector("span")
-    .textContent =
+  const buttonText =
+    registrationButton
+      .querySelector(
+        ".button-text"
+      );
+
+
+  buttonText.textContent =
     "РЕГИСТРАЦИЯ ЗАКРЫТА";
+
+
+  const arrow =
+    registrationButton
+      .querySelector(
+        ".arrow"
+      );
+
+
+  arrow.style.display =
+    "none";
 
 
   document.title =
@@ -81,7 +111,9 @@ function closeRegistration() {
 }
 
 
+
 function updateCountdown() {
+
 
   const now =
     Date.now();
@@ -91,19 +123,30 @@ function updateCountdown() {
     deadline - now;
 
 
+
   if (
     distance <= 0
   ) {
 
+
     closeRegistration();
 
-    clearInterval(
+
+    if (
       timerInterval
-    );
+    ) {
+
+      clearInterval(
+        timerInterval
+      );
+
+    }
+
 
     return;
 
   }
+
 
 
   const totalSeconds =
@@ -112,25 +155,29 @@ function updateCountdown() {
     );
 
 
+
   const hours =
     Math.floor(
       totalSeconds / 3600
     );
 
 
+
   const minutes =
     Math.floor(
+
       (
         totalSeconds %
         3600
-      ) /
-      60
+      ) / 60
+
     );
 
 
+
   const seconds =
-    totalSeconds %
-    60;
+    totalSeconds % 60;
+
 
 
   hoursElement.textContent =
@@ -151,43 +198,64 @@ function updateCountdown() {
     );
 
 
-  /* STATUS */
+
+  /*
+    STATUS
+  */
+
 
   if (
+
     distance <=
     10 * 60 * 1000
+
   ) {
+
 
     statusElement.textContent =
       "CRITICAL";
 
+
   }
 
+
   else if (
+
     distance <=
     60 * 60 * 1000
+
   ) {
+
 
     statusElement.textContent =
       "WARNING";
 
+
   }
+
 
   else {
 
+
     statusElement.textContent =
       "ACTIVE";
+
 
   }
 
 }
 
 
+
 updateCountdown();
 
 
-const timerInterval =
+
+timerInterval =
   setInterval(
+
     updateCountdown,
+
     1000
+
   );
